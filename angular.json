@@ -3,5 +3,46 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-  }
+    "ngx-span-of-strings": {
+      "projectType": "library",
+      "root": "projects/ngx-span-of-strings",
+      "sourceRoot": "projects/ngx-span-of-strings/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "tsConfig": "projects/ngx-span-of-strings/tsconfig.lib.json",
+            "project": "projects/ngx-span-of-strings/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/ngx-span-of-strings/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ngx-span-of-strings/src/test.ts",
+            "tsConfig": "projects/ngx-span-of-strings/tsconfig.spec.json",
+            "karmaConfig": "projects/ngx-span-of-strings/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/ngx-span-of-strings/tsconfig.lib.json",
+              "projects/ngx-span-of-strings/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "ngx-span-of-strings"
 }
